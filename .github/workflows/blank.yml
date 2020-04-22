@@ -20,4 +20,4 @@ jobs:
         REGISTRY_URL: "docker.io"
       with:
        image_name: "test"
-       image_tag: "ta1"
+       image_tag: "ta2"
