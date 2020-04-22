@@ -1,0 +1,23 @@
+name: Publish GRC
+on: 
+  push:
+      branches:    
+          - master
+          - develop
+jobs:
+
+  build_publish_docker_hub:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+
+    - name: Build and Push
+      uses: zemuldo/docker-build-push@master
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME  }}
+        DOCKER_NAMESPACE: "test"
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        REGISTRY_URL: "docker.io"
+      with:
+       image_name: "test"
+       image_tag: "latest"
